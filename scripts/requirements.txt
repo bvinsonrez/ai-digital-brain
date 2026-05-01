@@ -1,0 +1,9 @@
+# Core utilities used across multiple scripts
+python-frontmatter==1.1.0   # read/write YAML frontmatter in markdown notes
+pyyaml==6.0.2               # YAML parsing
+rich==13.9.4                # terminal output formatting (vault_maintenance reports)
+click==8.1.7                # CLI argument handling for scripts with options
+
+# Used by archive-pipeline/ AND enrich_notes.py
+# Requires ANTHROPIC_API_KEY environment variable (see scripts/README.md)
+anthropic==0.40.0           # Claude API client for classification, synthesis, and note enrichment
