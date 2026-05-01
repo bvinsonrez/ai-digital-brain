@@ -1,0 +1,27 @@
+# User-specific config — copy config.example.py to config.py and fill in your paths
+scripts/config.py
+
+# Project-scoped MCP config written by `claude mcp add --scope project`
+.mcp.json
+
+# Python
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# macOS
+.DS_Store
+
+# Node (experiments)
+node_modules/
+07_Experiments/*/node_modules/
+
+# Pipeline runtime configs (copy from .example files)
+scripts/vault-organizer/config.yaml
+scripts/archive-pipeline/pipeline.yaml
+
+# Log files
+*.log
