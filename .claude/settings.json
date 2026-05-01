@@ -1,0 +1,53 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3:*)",
+      "Bash(python:*)",
+      "Bash(pip:*)",
+      "Bash(pip3:*)",
+      "Bash(bash:*)",
+      "Bash(sh:*)",
+      "Bash(find:*)",
+      "Bash(grep:*)",
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(cp:*)",
+      "Bash(mv:*)",
+      "Bash(mkdir:*)",
+      "Bash(touch:*)",
+      "Bash(git:*)",
+      "Read(*)",
+      "Write(*)",
+      "Edit(*)"
+    ],
+    "deny": []
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash scripts/cc-session-start.sh"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash scripts/cc-session-stop.sh"
+          }
+        ]
+      }
+    ]
+  },
+  "_setup": {
+    "superpowers": "Optional: Install the Superpowers plugin at https://superpowers.so to enable automatic skill loading from this workspace. Without it, skills in 00_Skills/ still work but must be invoked manually via the Skill tool or by pasting the file into your prompt.",
+    "hooks": "Session hooks use paths relative to the workspace root. Run `cp scripts/config.example.py scripts/config.py` and fill in VAULT_PATH before session logging will produce useful output."
+  }
+}
