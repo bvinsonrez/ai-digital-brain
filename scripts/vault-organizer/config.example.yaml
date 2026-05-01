@@ -1,0 +1,38 @@
+# vault-organizer/config.example.yaml
+# Copy to config.yaml and fill in your values.
+# config.yaml is gitignored — never commit it.
+
+# Source folder: folder to scan for notes to organize
+# This can be a staging area, Downloads folder, or a specific vault subfolder
+source_dir: "/path/to/your/obsidian/vault/Inbox"
+
+# Output root for organized notes (typically your vault root)
+output_dir: "/path/to/your/obsidian/vault"
+
+dry_run: false
+
+# Map known entity/person/company names to vault folder destinations.
+# Keys are lowercase (matching is case-insensitive).
+# Values are vault-relative folder paths.
+entity_folder_map:
+  "acme corp": "Clients/AcmeCorp"
+  "widget co": "Clients/WidgetCo"
+
+# Fragments that identify an "internal" meeting (goes to Meetings/Notes)
+internal_patterns:
+  - "team meeting"
+  - "standup"
+  - "1-1"
+  - "all hands"
+
+# Fragments that identify a personal note (goes to Inbox for manual review)
+personal_patterns:
+  - "personal"
+  - "family"
+
+# Destination paths (vault-relative) for each classification
+destinations:
+  client: "Clients/{folder}/Meetings"
+  internal: "Meetings"
+  personal: "Inbox"
+  unknown: "Inbox"
