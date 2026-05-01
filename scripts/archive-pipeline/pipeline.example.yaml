@@ -1,0 +1,56 @@
+# archive-pipeline/pipeline.example.yaml
+# Copy to pipeline.yaml and fill in your values.
+# pipeline.yaml is gitignored — never commit it.
+#
+# REQUIRES: ANTHROPIC_API_KEY environment variable
+#   export ANTHROPIC_API_KEY="sk-ant-..."
+#
+# RUN: cd scripts/archive-pipeline && python archive_pipeline.py --config pipeline.yaml
+
+# Folder to scan for files to process (your source archive, downloads, etc.)
+source_dir: "/path/to/your/source/folder"
+
+# Vault root — processed notes are written here
+output_dir: "/path/to/your/obsidian/vault"
+
+dry_run: false
+
+trash:
+  method: macos   # moves to macOS Trash. Use "delete" to permanently delete.
+
+claude:
+  model: claude-sonnet-4-6
+  max_tokens: 2048
+
+# File handling rules by extension
+file_rules:
+  # Convert these to markdown notes
+  convert:
+    - pdf
+    - docx
+    - txt
+    - md
+  # Create a note referencing the file but don't convert content
+  note_trash:
+    - key        # Keynote presentation
+    - pptx       # PowerPoint
+    - xlsx       # Excel
+    - csv        # Data file
+  # Move to trash without creating a note
+  trash:
+    - ds_store
+    - tmp
+    - log
+
+# Optional: classification hints passed to Claude for content tagging.
+# Add your domain-specific categories here.
+classification_hints:
+  topics:
+    - "project management"
+    - "technical design"
+    - "meeting notes"
+    - "research"
+  domains:
+    - "data engineering"
+    - "analytics"
+    - "operations"
